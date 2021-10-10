@@ -15,78 +15,87 @@ namespace NumSysConv
     class DecimalConversion
     {
     
-    private:
-        // Here defines the required memebers for decimal conversions
-        const u_int8_t InputMaxSize{ 16 };
+    public:
         
         // Here actual Decimal to Binary conversion implemented
-        std::vector < bool > getBinaryNumber(int input) {
-            std::vector < bool > binaryNumber(0);
-            int quoficient = input;
+        std::vector <bool> toBinary(int input) {
+            std::vector <bool> binaryNumber(0);
             
-            for (u_int8_t i = 0; i < InputMaxSize; i++) {
-                if (quoficient != 0) {
-                    binaryNumber.insert(binaryNumber.end() - i, quoficient % 2);
-                    quoficient /= 2;
-                } else {
-                    binaryNumber.insert(binaryNumber.end() - i, 0);
-                }
+            // Every iteration, input/coefficient divided by 2 to get remainder
+            while (input != 0) {
+                binaryNumber.insert(binaryNumber.begin(), input % 2);
+                input /= 2;
             }
 
             return binaryNumber;
         }
         
-        // Here actual Decimal to Octal conversion implemented
-        void getOctalNumber(int input) {
+        // Here list of Decimal numbers convert to Binary numbers
+        std::vector <std::vector <bool>> toBinary(const std::vector <int> input_list) {
+            // create output vector with size of input list
+            std::vector <std::vector <bool>> output(0);
             
+            // iterate over given input list and convert each to binary
+            for (auto const &eachInput: input_list) {
+                output.push_back(toBinary(eachInput));
+            }
+            
+            return output;
+        }
+        
+        // Here actual Decimal to Octal conversion implemented
+        int toOctal(int input) {
+            int placevalue = 1, octalNumber = 0;
+            
+            while (input != 0) {
+                octalNumber += (input % 8) * placevalue;
+                input /= 8; // as it is octal, divide by 8 to get coefficient
+                placevalue *= 10;
+            }
+            
+            return octalNumber;
+        }
+
+        // Here list of Decimal numbers convert to Octal numbers
+        std::vector <int> toOctal(const std::vector <int> input_list) {
+            std::vector <int> output(0);
+            
+            for (auto const &eachInput : input_list) {
+                output.push_back(toOctal(eachInput));
+            }
+            return output;
         }
         
         // Here actual Decimal to Hexadecimal conversion implemented
-        void getHexadecimalNumber(int input) {
+        std::vector <unsigned char> toHexadecimal(int input) {
+            std::vector <unsigned char> hexadecimalNumber(0);
+            int temp_result;
             
-        }
-        
-    public:
-        // Returns the Binary converted input number
-        void toBinary(int input) {
-            std::vector < bool > result = getBinaryNumber(input);
-            
-            std::cout << input <<  " -> ";
-            for (int x: result)
-                std::cout << x;
-            std::cout << "" << std::endl;
-        }
-        
-        // Returns the Binary converted input list
-        void toBinary(int *input_list, int input_length) {
-            
-            for (int i = 0; i < input_length; i++) {
-                std::cout << input_list[i] << " -> ";
-                std::vector < bool > result = getBinaryNumber(input_list[i]);
-                for (int x: result)
-                    std::cout << x;
-                std::cout << "" << std::endl;
+            while (input != 0) {
+                temp_result = (input % 16);
+
+                if (temp_result > 9) {
+                    hexadecimalNumber.insert(hexadecimalNumber.begin(), temp_result + 55);
+                } else {
+                    hexadecimalNumber.insert(hexadecimalNumber.begin(), temp_result + 48);
+                }
+                input /= 16;
             }
-        }
-            
-        // Returns the Octal converted input number
-        void toOctal(int input) {
-            std::cout << "Reached octal conversions" << std::endl;
-        }
-        
-        // Returns the Octal converted input list
-        void toOctal(int input_list[]) {
-            std::cout << "Reached octal conversions" << std::endl;
-        }
-        
-        // Returns the Hexadecimal converted input list
-        void toHexadecimal(int input) {
-            std::cout << "Reached hexadecimal conversions" << std::endl;
+
+            return hexadecimalNumber;
         }
     
-        // Returns the Hexadecimal converted input list
-        void toHexadecimal(int input_list[]) {
-            std::cout << "Reached hexadecimal conversions" << std::endl;
+        // Here list of Decimal numbers convert to Hexadecimal numbers
+        std::vector <std::vector <unsigned char>> toHexadecimal(const std::vector <int> input_list) {
+            // create output vector with size of input list
+            std::vector <std::vector <unsigned char>> output(0);
+            
+            // iterate over given input list and convert each to binary
+            for (auto const &eachInput: input_list) {
+                output.push_back(toHexadecimal(eachInput));
+            }
+            
+            return output;
         }
     };
 }

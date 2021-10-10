@@ -8,7 +8,6 @@
 #ifndef NumberSystemConverter__h
 #define NumberSystemConverter__h
 
-#include <vector>
 #include "BinaryConversion.hpp"
 #include "DecimalConversion.hpp"
 #include "OctalConversion.hpp"
