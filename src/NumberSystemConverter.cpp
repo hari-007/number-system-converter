@@ -13,11 +13,10 @@
 
 #include "NumberSystemConverter.hpp"
 
-void printDecimalConversions() {
+void printDecimalConversions(const std::vector <int> input_list) {
     
     NumSysConv::DecimalConversion decimalConversion;
-    const std::vector <int> input_list({ 10, 7, 15, 251, 715 });
-
+    
     
     // Decimal to Binary conversion
     std::cout << "Decimal to Binary List:" << std::endl;
@@ -54,7 +53,53 @@ void printDecimalConversions() {
     }
 }
 
+void printBinaryConversions(const std::vector <std::vector<bool>> input_list) {
+    
+    NumSysConv::BinaryConversion binaryConversion;
+
+    
+    // Binary to Decimal conversion
+    std::cout << "\n\n" << "Binary to Decimal List:" << std::endl;
+    std::vector <int> outputDecimalList = binaryConversion.toDecimal(input_list);
+    for (int i = 0; i < input_list.size(); i++) {
+        std::copy(input_list[i].begin(),
+                  input_list[i].end(),
+                  std::ostream_iterator<bool>(std::cout, ""));
+
+        std::cout << " -> " << outputDecimalList[i] << std::endl;
+    }
+
+    // Binary to Octal conversion
+    std::cout << "\n\n" << "Binary to Octal List:" << std::endl;
+    std::vector <int> outputOctalList = binaryConversion.toOctal(input_list);
+
+    for (int i = 0; i < input_list.size(); i++) {
+        std::copy(input_list[i].begin(),
+                  input_list[i].end(),
+                  std::ostream_iterator<bool>(std::cout, ""));
+
+        std::cout << " -> " << outputOctalList[i] << std::endl;
+    }
+    
+    // Binary to Hexadecimal conversion
+    std::cout << "\n\n" << "Binary to Hexadecimal List:" << std::endl;
+    std::vector <std::vector <unsigned char>> outputHexadecimal = binaryConversion.toHexadecimal(input_list);
+
+    for (int i = 0; i < input_list.size(); i++) {
+        std::copy(input_list[i].begin(),
+                  input_list[i].end(),
+                  std::ostream_iterator<bool>(std::cout, ""));
+        std::cout << " -> ";
+        std::copy(outputHexadecimal[i].begin(),
+                  outputHexadecimal[i].end(),
+                  std::ostream_iterator<unsigned char>(std::cout, ""));
+        std::cout << std::endl;
+    }
+}
+
 int main(int argc, const char * argv[]) {
-    printDecimalConversions();
+    printDecimalConversions({ 10, 7, 15, 251, 715 });
+    std::cout << "\n------------------------------" << std::endl;
+    printBinaryConversions({ {1,0,1,0}, {1,1,1}, {1,1,1,1}, {1,1,1,1,1,1,1}, {1,0,1,0,1,0,1,0} });
     return 0;
 }

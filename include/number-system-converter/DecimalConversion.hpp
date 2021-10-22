@@ -30,17 +30,17 @@ namespace NumSysConv
             return binaryNumber;
         }
         
-        // Here list of Decimal numbers convert to Binary numbers
+        // Here list of Decimal numbers converts to Binary numbers
         std::vector <std::vector <bool>> toBinary(const std::vector <int> input_list) {
             // create output vector with size of input list
-            std::vector <std::vector <bool>> output(0);
+            std::vector <std::vector <bool>> output_list(0);
             
             // iterate over given input list and convert each to binary
             for (auto const &eachInput: input_list) {
-                output.push_back(toBinary(eachInput));
+                output_list.push_back(toBinary(eachInput));
             }
             
-            return output;
+            return output_list;
         }
         
         // Here actual Decimal to Octal conversion implemented
@@ -56,14 +56,14 @@ namespace NumSysConv
             return octalNumber;
         }
 
-        // Here list of Decimal numbers convert to Octal numbers
+        // Here list of Decimal numbers converts to Octal numbers
         std::vector <int> toOctal(const std::vector <int> input_list) {
-            std::vector <int> output(0);
+            std::vector <int> output_list(0);
             
             for (auto const &eachInput : input_list) {
-                output.push_back(toOctal(eachInput));
+                output_list.push_back(toOctal(eachInput));
             }
-            return output;
+            return output_list;
         }
         
         // Here actual Decimal to Hexadecimal conversion implemented
@@ -85,17 +85,17 @@ namespace NumSysConv
             return hexadecimalNumber;
         }
     
-        // Here list of Decimal numbers convert to Hexadecimal numbers
+        // Here list of Decimal numbers converts to Hexadecimal numbers
         std::vector <std::vector <unsigned char>> toHexadecimal(const std::vector <int> input_list) {
             // create output vector with size of input list
-            std::vector <std::vector <unsigned char>> output(0);
+            std::vector <std::vector <unsigned char>> output_list(0);
             
             // iterate over given input list and convert each to binary
             for (auto const &eachInput: input_list) {
-                output.push_back(toHexadecimal(eachInput));
+                output_list.push_back(toHexadecimal(eachInput));
             }
             
-            return output;
+            return output_list;
         }
     };
 }
