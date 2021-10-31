@@ -13,6 +13,15 @@ static int pow_10[10] = {
         10000000, 100000000, 1000000000
     };
 
+static int pow_8[10] = {
+        1, 8, 64, 512, 4096, 32768, 262144, 2097152,
+    16777216, 134217728
+    };
+
+// Common required includes
+#include <vector>
+
+// Actual source header files
 #include "BinaryConversion.hpp"
 #include "DecimalConversion.hpp"
 #include "OctalConversion.hpp"

@@ -49,7 +49,7 @@ namespace NumSysConv
             
             while (input != 0) {
                 octalNumber += (input % 8) * placevalue;
-                input /= 8; // as it is octal, divide by 8 to get coefficient
+                input /= 8; // For Octal, divide by 8 to get coefficient
                 placevalue *= 10;
             }
             

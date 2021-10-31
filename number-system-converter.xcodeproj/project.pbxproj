@@ -121,7 +121,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					467AD019270D771D00A1A87E = {
 						CreatedOnToolsVersion = 13.0;
@@ -273,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -282,6 +283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
