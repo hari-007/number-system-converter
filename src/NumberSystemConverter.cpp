@@ -8,6 +8,7 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <string>
 #include <iterator>
 #include <algorithm>
 
@@ -102,7 +103,7 @@ void printOctalConversions(const std::vector <int> input_list) {
     NumSysConv::OctalConversion octalConversion;
 
     
-    // Octal` to Binary conversion
+    // Octal to Binary conversion
     std::cout << "Octal to Binary List:" << std::endl;
     std::vector <std::vector<bool>> outputBinaryList = octalConversion.toBinary(input_list);
     for (int i = 0; i < input_list.size(); i++) {
@@ -137,17 +138,30 @@ void printOctalConversions(const std::vector <int> input_list) {
     }
 }
 
-void printHexadecimalConversions(const std::vector <std::vector<unsigned char>> input_list) {
+void printHexadecimalConversions(const std::vector <std::string> input_list) {
+    NumSysConv::HexadecimalConversion hexadecimalConversion;
+
     
+    // Hexadecimal to Binary conversion
+    std::cout << "Hexadecimal to Binary List:" << std::endl;
+    std::vector <std::vector<bool>> outputBinaryList = hexadecimalConversion.toBinary(input_list);
+    for (int i = 0; i < input_list.size(); i++) {
+        std::cout << std::left << std::setw(7) << std::setfill(' ');
+        std::cout << input_list[i] << " -> ";
+        std::copy(outputBinaryList[i].begin(),
+                  outputBinaryList[i].end(),
+                  std::ostream_iterator<bool>(std::cout, ""));
+        std::cout << std::endl;
+    }
 }
 
 int main(int argc, const char * argv[]) {
-    printDecimalConversions({ 10, 7, 15, 251, 715 });
-    std::cout << "\n------------------------------" << std::endl;
-    printBinaryConversions({{1,0,1,0}, {1,1,1}, {1,1,1,1}, {1,1,1,1,1,1,1}, {1,0,1,0,1,0,1,0}});
-    std::cout << "\n------------------------------" << std::endl;
-    printOctalConversions({ 4, 7, 15, 251, 715 });
+//    printDecimalConversions({ 10, 7, 15, 251, 715 });
 //    std::cout << "\n------------------------------" << std::endl;
-//    printHexadecimalConversions({ {'4'}, {'7'}, {'1','5'}, {'2', '5', '1'}, {'7', '1', '5'} });
+//    printBinaryConversions({{1,0,1,0}, {1,1,1}, {1,1,1,1}, {1,1,1,1,1,1,1}, {1,0,1,0,1,0,1,0}});
+//    std::cout << "\n------------------------------" << std::endl;
+//    printOctalConversions({ 4, 7, 15, 251, 715 });
+    std::cout << "\n------------------------------" << std::endl;
+    printHexadecimalConversions({ "4", "7", "15", "251", "715" });
     return 0;
 }

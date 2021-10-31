@@ -38,7 +38,6 @@ namespace NumSysConv
         
         // Here list of Octal numbers converts to Binary numbers
         std::vector <std::vector <bool>> toBinary(const std::vector <int> input_list) {
-            // create output vector with size of input list
             std::vector <std::vector <bool>> output_list(0);
             
             // iterate over given input list and convert each to binary
