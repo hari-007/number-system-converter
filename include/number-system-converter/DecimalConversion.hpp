@@ -67,8 +67,8 @@ namespace NumSysConv
         }
         
         // Here actual Decimal to Hexadecimal conversion implemented
-        std::vector <unsigned char> toHexadecimal(int input) {
-            std::vector <unsigned char> hexadecimalNumber(0);
+        std::string toHexadecimal(int input) {
+            std::string hexadecimalNumber="";
             int temp_result;
             
             while (input != 0) {
@@ -86,9 +86,9 @@ namespace NumSysConv
         }
     
         // Here list of Decimal numbers converts to Hexadecimal numbers
-        std::vector <std::vector <unsigned char>> toHexadecimal(const std::vector <int> input_list) {
+        std::vector <std::string> toHexadecimal(const std::vector <int> input_list) {
             // create output vector with size of input list
-            std::vector <std::vector <unsigned char>> output_list(0);
+            std::vector <std::string> output_list(0);
             
             // iterate over given input list and convert each to binary
             for (auto const &eachInput: input_list) {

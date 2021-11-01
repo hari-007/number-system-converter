@@ -74,7 +74,7 @@ namespace NumSysConv
         
         
         // Here actual Octal to Hexadecimal conversion implemented
-        std::vector <unsigned char> toHexadecimal(int input, BinaryConversion binaryConversion) {
+        std::string toHexadecimal(int input, BinaryConversion binaryConversion) {
             // First convert octal to binary, then convert binary to Hexadecimal
             std::vector <bool> binaryResult = toBinary(input);
             return binaryConversion.toHexadecimal(binaryResult);
@@ -82,8 +82,8 @@ namespace NumSysConv
         
         
         // Here list of Octal numbers converts to Hexadecimal numbers
-        std::vector <std::vector <unsigned char>> toHexadecimal(std::vector<int> input_list) {
-            std::vector <std::vector <unsigned char>> output_list(0);
+        std::vector <std::string> toHexadecimal(std::vector<int> input_list) {
+            std::vector <std::string> output_list(0);
             BinaryConversion binaryConversion;
             for (int eachInput : input_list) {
                 output_list.push_back(toHexadecimal(eachInput, binaryConversion));

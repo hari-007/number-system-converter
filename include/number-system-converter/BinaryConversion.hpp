@@ -14,6 +14,12 @@ namespace NumSysConv
     class BinaryConversion
     {
     
+    private:
+        static constexpr int pow_10[10] = {
+            1, 10, 100, 1000, 10000, 100000, 1000000,
+            10000000, 100000000, 1000000000
+        };
+        
     public:
         
         // Here actual Binary to Decimal conversion implemented
@@ -74,10 +80,10 @@ namespace NumSysConv
         }
         
         // Here actual Binary to Hexadecimal conversion implemented
-        std::vector <unsigned char> toHexadecimal(std::vector <bool> input) {
+        std::string toHexadecimal(std::vector <bool> input) {
             int bitgroup = 0, temp_result = 0;  // Temp value to identify 3 bits group in a total binary number
             int i = 0; // output determining values
-            std::vector <unsigned char> hexadecimalNumber(0);
+            std::string hexadecimalNumber = "";
             
             std::for_each(input.rbegin(), input.rend(), [&] (auto const &eachValue) {
                 if (i > 0 && i%4 == 0) {
@@ -107,8 +113,8 @@ namespace NumSysConv
         }
         
         // Here list of Binary numbers converts to Octal numbers
-        std::vector <std::vector <unsigned char>> toHexadecimal(std::vector <std::vector <bool>> input_list) {
-            std::vector <std::vector <unsigned char>> output_list(0);
+        std::vector <std::string> toHexadecimal(std::vector <std::vector <bool>> input_list) {
+            std::vector <std::string> output_list(0);
             
             for (std::vector <bool> eachInput : input_list) {
                 output_list.push_back(toHexadecimal(eachInput));
